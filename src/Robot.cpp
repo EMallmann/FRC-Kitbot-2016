@@ -1,6 +1,11 @@
 #include "WPILib.h"
 #include "DriveTrain.h"
 #include "Autonomous.h"
+#include "Manipulator.h"
+#include "Camera.h"
+#include "NavX.h"
+#include "Shooter.h"
+
 class Robot: public IterativeRobot{
 private:
 	LiveWindow *lw = LiveWindow::GetInstance();
