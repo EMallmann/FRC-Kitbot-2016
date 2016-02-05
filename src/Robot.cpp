@@ -11,17 +11,12 @@ private:
 	LiveWindow *lw = LiveWindow::GetInstance();
 	SendableChooser *chooser;
 
-	Joystick *stick;
+
 	Autonomous *autonomous;
 	DriveTrain *Drive;
 
 
 
-	Encoder *leftEncoder;
-	Encoder *rightEncoder;
-
-	double leftStart=0.0;
-	double rightStart=0.0;
 	int step=0;
 
 
@@ -30,13 +25,9 @@ private:
 
 
 		Drive= new DriveTrain();
-		stick= new Joystick(0);
 
 
-		leftEncoder = new Encoder (24,25, true, CounterBase:: k4X); //check ports
-		rightEncoder = new Encoder (16,17, true, CounterBase:: k4X);
-		leftEncoder->SetDistancePerPulse(6.0*3.14/128.0); //check circumference/(pulses per revolution)
-		rightEncoder->SetDistancePerPulse(6.0*3.14/256.0);
+
 		autonomous = new Autonomous(Drive);
 	}
 
@@ -52,10 +43,7 @@ private:
 	 */
 	void AutonomousInit(){
 
-		leftEncoder->Reset();
-		rightEncoder->Reset();
-		rightStart=0.0;
-		leftStart=0.0;
+
 
 		autonomous->startTimer();
 
@@ -67,8 +55,7 @@ private:
 	}
 
 	void TeleopInit(){
-		rightEncoder->Reset();
-		leftEncoder->Reset();
+		Drive->TeleopInit();
 	}
 
 	void TeleopPeriodic(){
