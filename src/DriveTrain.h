@@ -1,5 +1,5 @@
 /*
- * DriveTrain.h 
+ * DriveTrain.h
  *
  *  Created on: Jan 31, 2016
  *      Authors: Eric and Jack
@@ -15,7 +15,8 @@ class DriveTrain {
 	Victor *vic3;
 	Victor *vic4;
 
-	Joystick *stick;
+	Joystick *leftStick;
+	Joystick *rightStick;
 
 	RobotDrive *myRobot;
 
@@ -36,4 +37,3 @@ public:
 };
 
 #endif /* SRC_DRIVETRAIN_H_ */
-
