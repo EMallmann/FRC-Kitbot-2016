@@ -24,18 +24,14 @@ Autonomous::Autonomous(DriveTrain *dt) {
 	robotd=dt;
 	timer= new Timer();
 
+
 }
 	void Autonomous::doNothing(){
 		robotd->DriveSet(0.0,0.0);
 	}
 	void Autonomous::driveOverDefense(){
-
-		if (timer->Get()<5.0){
-			robotd->DriveSet(1.0,0.0);
-		}
-		else{
-			Autonomous::doNothing();
-		}
+		//robotd->driveDistance(100, .6);
+		robotd->turnRight(90);
 
 	}
 	bool Autonomous::attackTower(std::string position){
