@@ -5,6 +5,7 @@
  *      Authors: Eric and Jack
  */
 #include "WPILib.h"
+#include "AHRS.h"
 #ifndef SRC_DRIVETRAIN_H_
 #define SRC_DRIVETRAIN_H_
 
@@ -23,6 +24,10 @@ class DriveTrain {
 	Encoder *leftEncoder;
 	Encoder *rightEncoder;
 
+	AHRS *ahrs;
+	int step;
+	double angleStart;
+	double currentAngle;
 public:
 	DriveTrain();
 
@@ -32,8 +37,10 @@ public:
 	void AutonomousInit();
 	void TeleopInit();
 	void Drive();
-	bool driveDistance(int,double);
+	void driveDistance(int,float);
 
+	double getChangeTheta();
+	void turnRight(double);
 };
 
 #endif /* SRC_DRIVETRAIN_H_ */
