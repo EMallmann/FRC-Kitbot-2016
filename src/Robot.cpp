@@ -5,6 +5,7 @@
 #include "Camera.h"
 #include "NavX.h"
 #include "Shooter.h"
+#include "AHRS.h"
 
 class Robot: public IterativeRobot{
 private:
@@ -44,7 +45,7 @@ private:
 	void AutonomousInit(){
 
 
-
+		Drive->TeleopInit();
 		autonomous->startTimer();
 
 	}
