@@ -1,6 +1,5 @@
 /*
- * DriveTrain.cpp
- *
+ * DriveTrain.cpp *
  *  Created on: Jan 31, 2016
  *      Authors: Eric and Jack
  */
@@ -73,14 +72,14 @@ DriveTrain::DriveTrain() {
 	void DriveTrain::driveDistance(int distanceInches, float speed){
 		if (step==1){
 			angleStart= ahrs->GetAngle()-180;
-			myRobot->ArcadeDrive(0.0,0.0,true);
+			myRobot->Drive(0.0,0.0);
 			step++;
 		}
 
 		if (step==2){
 			double changeInAngle= ((ahrs->GetAngle()-180)-angleStart);
 			if (leftEncoder->GetDistance()< distanceInches && leftEncoder->GetDistance()> -distanceInches && rightEncoder->GetDistance()< distanceInches && rightEncoder->GetDistance()>-distanceInches){
-				myRobot->ArcadeDrive(speed, -changeInAngle/40, true);
+				myRobot->Drive(speed, -changeInAngle/80);
 			}
 			else{
 				myRobot->ArcadeDrive(0.0,0.0,true);
@@ -93,6 +92,7 @@ DriveTrain::DriveTrain() {
 
 	void DriveTrain::turnRight(double angle){
 		if (step==1){
+					ahrs->Reset();
 					angleStart= ahrs->GetAngle()-180;
 					myRobot->ArcadeDrive(0.0,0.0,true);
 					step++;
@@ -109,6 +109,8 @@ DriveTrain::DriveTrain() {
 				vic2->SetSpeed(0);
 				vic3->SetSpeed(0);
 				vic4->SetSpeed(0);
+
 			}
 			}
+		SmartDashboard::PutNumber("Current Angle", ahrs->GetAngle());
 	}
